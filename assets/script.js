@@ -1,10 +1,10 @@
 // discos yasmin
 const player1 = document.createElement('div');
-player1.classList('player1')
+player1.classList.add('player1')
 document.body.appendChild(player1)
 
 const player2 = document.createElement('div');
-player2.classList('player2')
+player2.classList.add('player2')
 document.body.appendChild(player2)
 
 // ---------------- GERANDO MAPA ------------------//
