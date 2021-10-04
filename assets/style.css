@@ -28,4 +28,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+.player1{
+    position: absolute;
+    background-color: blue;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    top: 200px;
+}
+.player2{
+    position: absolute;
+    background-color: red;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
 }
