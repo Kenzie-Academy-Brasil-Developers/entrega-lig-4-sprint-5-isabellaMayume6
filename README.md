@@ -1,4 +1,4 @@
-# Entrega: Lig-4
+# Entrega: Lig-4.
 
 **ATENÇÃO!!**
 
