@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 .player1{
     position: absolute;
     background-color: blue;
