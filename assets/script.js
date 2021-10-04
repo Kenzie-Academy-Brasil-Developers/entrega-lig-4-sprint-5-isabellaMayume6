@@ -1,3 +1,4 @@
+// ---------------- GERANDO MAPA ------------------//
 let mainGame = document.getElementById('jogo')
 let jogo = document.createElement('div')
 jogo.setAttribute('class', 'jogoClass')
