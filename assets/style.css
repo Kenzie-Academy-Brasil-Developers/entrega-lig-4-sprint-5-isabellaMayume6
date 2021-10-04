@@ -29,7 +29,8 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.player1{
+
+.player1 {
     position: absolute;
     background-color: blue;
     width: 10%;
@@ -37,7 +38,8 @@ body {
     border-radius: 50%;
     top: 200px;
 }
-.player2{
+
+.player2 {
     position: absolute;
     background-color: red;
     width: 10%;
