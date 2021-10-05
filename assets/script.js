@@ -20,12 +20,12 @@ let linha = document.createElement('div');
 function gerandoMapa() {
     for (let i = 1; i <= 7; i++) {
         let coluna = document.createElement('div')
-        coluna.classList.add('coluna')
+        coluna.classList.add('coluna', 'coluna' + i)
         jogo.appendChild(coluna)
         
         for (let j = 1; j <= 6; j++) {
             let linha = document.createElement('div')
-            linha.classList.add('linha')
+            linha.classList.add('linha', 'linha' + j)
             coluna.appendChild(linha)
         }
     }
@@ -34,27 +34,26 @@ function gerandoMapa() {
 gerandoMapa()
 document.body.addEventListener("click",diskFall);
 
-
 function diskFall (Event) {
     let alvo = Event.path[0]
-    let input = Event.path[1].lastChild
-    let actual = input.childElementCount
-    console.log(Event.path[1])
-    if(alvo.childElementCount === 0){
-        if (count%2 === 0 && alvo.className === "linha"){
+    let input = Event.path[1]
+    let actual = Event.path[1].lastChild
+    console.log(alvo.nextSibling);
+    if(actual.childElementCount === 0){
+        if (count%2 === 0 && alvo.childElementCount === 0){
             const player1 = document.createElement('div');
             player1.classList = 'player1'
-            alvo.appendChild(player1);
+            actual.appendChild(player1);
             count++
-        }else if (count%2 === 1 && alvo.className === "linha") {
+        }else if (count%2 === 1 && alvo.innerHTML === "") {
             const player2 = document.createElement('div');
             player2.classList = 'player2'
-            alvo.appendChild(player2);
+            actual.appendChild(player2);
             count++
         }
-    }else {
-        actual --
     }
-    
+    // else if() {
+
+    // }
 };
 
