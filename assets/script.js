@@ -27,13 +27,9 @@ let mainGame = document.getElementById('jogo')
 let jogo = document.createElement('div')
 jogo.setAttribute('class', 'jogoClass')
 mainGame.appendChild(jogo)
-<<<<<<< HEAD
-
-
-=======
 let coluna = document.createElement('div');
 let linha = document.createElement('div');
->>>>>>> 4d8d061a016fbdf46aa0781a508b6bc92484b674
+
 function gerandoMapa() {
     for (let i = 0; i < arrayElementos.length; i++) {
         let coluna = document.createElement('div')
@@ -49,33 +45,3 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
-document.body.addEventListener("click",diskFall);
-let playerMapChange = arrayElementos[0][5]
-let eixoY = 5
-
-function diskFall (Event) {
-    let alvo = Event.path[0] //elemento da linha
-    let input = Event.path[1] // coluna
-    let actual = Event.path[1].lastChild//ultimo filho da coluna
-    console.log(input.children[eixoY].childElementCount)
-    if(input.children[eixoY].childElementCount === 0){
-        if(input.children[eixoY] === actual)
-            if (count%2 === 0){
-                const player1 = document.createElement('div');
-                player1.classList = 'player1'
-                actual.appendChild(player1);
-                count++
-            }else if (count%2 === 1 ){
-                const player2 = document.createElement('div');
-                player2.classList = 'player2'
-                actual.appendChild(player2);
-                playerMapChange = 1
-                count++
-        } eixoY--
-    }
-    else if(actual.childElementCount === 1) {
-        const player2 = document.createElement('div');
-        player2.classList = 'player2'
-    }
-};
-
