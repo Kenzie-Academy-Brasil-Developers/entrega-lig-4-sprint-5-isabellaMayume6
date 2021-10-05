@@ -47,32 +47,49 @@ function gerandoMapa() {
 
 gerandoMapa()
 document.body.addEventListener("click",diskFall);
-let playerMapChange = arrayElementos[0][5]
-let eixoY = 5
+function diskFall (event){
+    let pointClick = event.path[0];
+    let element = event.path[1];
+    let eixo = event.path[1].children.length;
+    let eixoY = eixo - 1
+    let cell = event.path[1].children[eixoY];
+    if (cell.childElementCount === 0){
+        if(count%2 === 0){
+            const player1 = document.createElement('div');
+            player1.classList.add('player1')
+            cell.appendChild(player1);
+            count++
+        } else if (count%2 === 1){
+            const player2 = document.createElement('div');
+            player2.classList.add('player2')
+            cell.appendChild(player2);
+            count++
+        }
+    }else {
+        console.log(eixoY)
+        while (cell.childElementCount === 1){
+            eixoY--
+            console.log(eixoY)
+            cell = event.path[1].children[eixoY];
+            if (cell.childElementCount === 0){
+                if(count%2 === 0){
+                    const player1 = document.createElement('div');
+                    player1.classList.add('player1')
+                    cell.appendChild(player1);
+                    count++
+                    break
+                } else if (count%2 === 1){
+                    const player2 = document.createElement('div');
+                    player2.classList.add('player2')
+                    cell.appendChild(player2);
+                    count++
+                    break
+                }               
+            }
+            
+        }  
+    } 
+}
 
-function diskFall (Event) {
-    let alvo = Event.path[0] //elemento da linha
-    let input = Event.path[1] // coluna
-    let actual = Event.path[1].lastChild//ultimo filho da coluna
-    console.log(input.children[eixoY].childElementCount)
-    if(input.children[eixoY].childElementCount === 0){
-        if(input.children[eixoY] === actual)
-            if (count%2 === 0){
-                const player1 = document.createElement('div');
-                player1.classList = 'player1'
-                actual.appendChild(player1);
-                count++
-            }else if (count%2 === 1 ){
-                const player2 = document.createElement('div');
-                player2.classList = 'player2'
-                actual.appendChild(player2);
-                playerMapChange = 1
-                count++
-        } eixoY--
-    }
-    else if(actual.childElementCount === 1) {
-        const player2 = document.createElement('div');
-        player2.classList = 'player2'
-    }
-};
+
 
