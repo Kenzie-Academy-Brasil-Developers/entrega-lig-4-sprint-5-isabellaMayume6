@@ -36,25 +36,25 @@ gerandoMapa()
 document.body.addEventListener("click",diskFall);
 
 function diskFall (Event) {
-    let alvo = Event.path[0]
-    let input = Event.path[1]
-    let actual = Event.path[1].lastChild
-    console.log(alvo.nextSibling);
+    let alvo = Event.path[0] //elemento da linha
+    let input = Event.path[1] // coluna
+    let actual = Event.path[1].lastChild //ultimo filho da coluna
     if(actual.childElementCount === 0){
         if (count%2 === 0 && alvo.childElementCount === 0){
             const player1 = document.createElement('div');
             player1.classList = 'player1'
             actual.appendChild(player1);
             count++
-        }else if (count%2 === 1 && alvo.innerHTML === "") {
+        }else if (count%2 === 1 && alvo.childElementCount === 0){
             const player2 = document.createElement('div');
             player2.classList = 'player2'
             actual.appendChild(player2);
             count++
         }
     }
-    // else if() {
-
-    // }
+    else if(actual.childElementCount === 1) {
+        const player2 = document.createElement('div');
+        player2.classList = 'player2'
+    }
 };
 
