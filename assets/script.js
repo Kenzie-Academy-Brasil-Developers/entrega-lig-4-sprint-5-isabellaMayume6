@@ -23,23 +23,24 @@ let arrayElementos = [
     [0, 0, 0, 0, 0, 0]
 ]
 
-let arrayteste = []
-
 let mainGame = document.getElementById('jogo')
 let jogo = document.createElement('div')
-jogo.setAttribute('class', 'jogoClass')
+jogo.setAttribute('id', 'jogoClass')
 mainGame.appendChild(jogo)
+
 let coluna = document.createElement('div');
 let linha = document.createElement('div');
+
 function gerandoMapa() {
     for (let i = 0; i < 7; i++) {
         let coluna = document.createElement('div')
-        coluna.classList.add('coluna', 'coluna' + i)
+        coluna.classList.add('coluna')
+        coluna.setAttribute('id', 'coluna' + i)
         jogo.appendChild(coluna)
         for (let j = 0; j < 6; j++) {
 
             let linha = document.createElement('div')
-            linha.classList.add('linha', 'linha' + j)
+            linha.classList.add('linha')
             coluna.appendChild(linha)
         }
     }
@@ -48,13 +49,14 @@ function gerandoMapa() {
 gerandoMapa()
 //Mateus - Aperecer fichas no click no Tabuleiro
 document.body.addEventListener("click",diskFall);
+
 function diskFall (event){
     let elementoClick = event.path[0]; //Elemento clicado
     let colunaInteira = event.path[1]; //ColunaArray
     let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
     let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
     let cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
-    if (cell.childElementCount === 0){
+    if (cell.childElementCount === 0 && cell.className === "linha"){
         if(count%2 === 0){
             const player1 = document.createElement('div');
             player1.classList.add('player1')
@@ -86,10 +88,6 @@ function diskFall (event){
                     break
                 }               
             }
-            
         }  
     } 
 }
-
-
-

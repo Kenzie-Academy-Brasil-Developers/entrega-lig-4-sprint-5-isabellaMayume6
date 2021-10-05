@@ -16,10 +16,11 @@ body {
     background-color: gainsboro;
 }
 
-.jogoClass {
+#jogoClass {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
+
 }
 
 #jogo {
@@ -29,18 +30,21 @@ body {
     align-items: center;
 }
 
-.player1{
+.player1 {
+    position: absolute;
+
     background-color: blue;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px;
-}
-.player2{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px;
+    }
+
+.player2 {
+    position: absolute;
     background-color: red;
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 2px;
-    
 }
