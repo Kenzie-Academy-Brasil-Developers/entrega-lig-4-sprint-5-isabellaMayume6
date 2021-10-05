@@ -46,6 +46,7 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
+//Mateus - Aperecer fichas no click no Tabuleiro
 document.body.addEventListener("click",diskFall);
 function diskFall (event){
     let elementoClick = event.path[0]; //Elemento clicado
