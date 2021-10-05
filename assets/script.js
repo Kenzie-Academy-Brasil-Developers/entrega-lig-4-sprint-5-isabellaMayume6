@@ -59,3 +59,57 @@ function diskFall (Event) {
     
 };
 
+
+function vitoriaHorizontal(resultMap,linhasMap){
+    const newMap = [];
+    for(let i = 0; i < 7;i++){
+        newMap.push(resultMap[linhasMap][i])
+
+        for(let i = 0; i < 4;i++){
+            if(newMap[i] === newMap[i+1] && 
+               newMap[i] === newMap[i+2] && 
+               newMap[i] === newMap[i+3] && 
+               newMap[i] !== 0){
+                if(newMap[i] === 'player1'){
+                    let text = 'Player 1'
+                    victory(text)
+                }else{
+                    let text = 'Player 2'
+                    victory(text)
+                }
+            }
+        }
+    }
+  
+}
+
+function vitoriaVertical(resultMap,colunasMap){
+    const newMap = [];
+    for(let i = 0; i < 6;i++){
+       newMap.push(resultMap[colunasMap][i])
+
+       for(let i = 0; i < 4;i++){
+           if(newMap[i+1] === newMap[i] &&
+              newMap[i+2] === newMap[i] &&
+              newMap[i+3] === newMap[i] &&
+              newMap[i] !== 0){
+                  if(newMap[i] === 'player1'){
+                      let text = 'Player 1'
+                      victory(text)
+                    }else{
+                      let text = 'Player 2'
+                      victory(text)
+                    }
+            }
+        }
+    }
+}
+
+function victory(text){
+let alert =  document.createElement('span');
+alert.innerText = `Parabens!! Voce Ganhou ${text}`;
+alert.classList.remove('mostrar')
+setTimeout(function Sair(){
+    alert.classList.add('mostrar')
+},2000)
+}
