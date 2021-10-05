@@ -28,6 +28,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .player1{
     background-color: blue;
     width: 45px;
