@@ -16,7 +16,7 @@ body {
     background-color: gainsboro;
 }
 
-.jogoClass {
+#jogoClass {
     margin-top: 50px;
     display: flex;
     flex-direction: row;
@@ -31,29 +31,25 @@ body {
     align-items: center;
 }
 
-<<<<<<< HEAD
-.player1 {
+<<<<<<< HEAD .player1 {
     position: absolute;
-=======
-.player1{
->>>>>>> 4d8d061a016fbdf46aa0781a508b6bc92484b674
-    background-color: blue;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px;
-}
-<<<<<<< HEAD
 
-.player2 {
-    position: absolute;
-=======
-.player2{
->>>>>>> 4d8d061a016fbdf46aa0781a508b6bc92484b674
-    background-color: red;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px;
-    
-}
+    =======.player1 {
+        >>>>>>>4d8d061a016fbdf46aa0781a508b6bc92484b674 background-color: blue;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px;
+    }
+
+    <<<<<<< HEAD .player2 {
+        position: absolute;
+
+        =======.player2 {
+            >>>>>>>4d8d061a016fbdf46aa0781a508b6bc92484b674 background-color: red;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px;
+
+        }
