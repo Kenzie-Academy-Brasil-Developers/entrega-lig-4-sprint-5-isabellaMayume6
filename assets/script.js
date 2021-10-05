@@ -19,12 +19,11 @@ let arrayElementos = [
     [0, 0, 0, 0, 0, 0]
 ]
 
-let arrayteste = []
-
 let mainGame = document.getElementById('jogo')
 let jogo = document.createElement('div')
 jogo.setAttribute('class', 'jogoClass')
 mainGame.appendChild(jogo)
+
 
 function gerandoMapa() {
     for (let i = 0; i < arrayElementos.length; i++) {
