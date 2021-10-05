@@ -32,11 +32,11 @@ mainGame.appendChild(jogo)
 let coluna = document.createElement('div');
 let linha = document.createElement('div');
 function gerandoMapa() {
-    for (let i = 0; i < arrayElementos.length; i++) {
+    for (let i = 0; i < 7; i++) {
         let coluna = document.createElement('div')
         coluna.classList.add('coluna', 'coluna' + i)
         jogo.appendChild(coluna)
-        for (let j = 0; j < arrayElementos[i].length; j++) {
+        for (let j = 0; j < 6; j++) {
 
             let linha = document.createElement('div')
             linha.classList.add('linha', 'linha' + j)
@@ -48,11 +48,11 @@ function gerandoMapa() {
 gerandoMapa()
 document.body.addEventListener("click",diskFall);
 function diskFall (event){
-    let pointClick = event.path[0];
-    let element = event.path[1];
-    let eixo = event.path[1].children.length;
-    let eixoY = eixo - 1
-    let cell = event.path[1].children[eixoY];
+    let elementoClick = event.path[0]; //Elemento clicado
+    let colunaInteira = event.path[1]; //ColunaArray
+    let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
+    let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
+    let cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
     if (cell.childElementCount === 0){
         if(count%2 === 0){
             const player1 = document.createElement('div');
@@ -66,11 +66,10 @@ function diskFall (event){
             count++
         }
     }else {
-        console.log(eixoY)
+        console.log(elementoY)
         while (cell.childElementCount === 1){
-            eixoY--
-            console.log(eixoY)
-            cell = event.path[1].children[eixoY];
+            elementoY--
+            cell = event.path[1].children[elementoY];
             if (cell.childElementCount === 0){
                 if(count%2 === 0){
                     const player1 = document.createElement('div');
