@@ -28,20 +28,32 @@ body{
 }
 
 .player1 {
-    position: absolute;
-
-    background-color: blue;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: 2px;
-    }
-
-.player2 {
-    position: absolute;
-    background-color: red;
+    /* position: absolute; */
+    background:  no-repeat center;
+    background-size: 45px;
+    /* background-color: blue; */
+    background-image: url(../assets/img/salsichascare.png);
     width: 45px;
     height: 45px;
-    border-radius: 50%;
+    border-radius: 20%;
     border: 2px;
+    margin: 2.5px;
+}
+
+.player2 {
+    /* position: absolute; */
+    background:  no-repeat center;
+    background-size: 40px;
+    background-image: url(../assets/img/scoobyscare.png);
+    /* background-color: red; */
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+    border: 2px;
+    margin: 2.5px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
