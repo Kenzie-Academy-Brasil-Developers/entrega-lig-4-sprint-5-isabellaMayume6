@@ -55,7 +55,7 @@ function gerandoMapa() {
 gerandoMapa()
 
 // Mateus Footer 
-let botãoAbaixo1 =document.createElement("button");
+let botãoAbaixo1 = document.createElement("button");
 let botãoAbaixo2 = document.createElement("button");
 let foot = document.createElement("footer");
 document.body.appendChild(foot);
@@ -70,23 +70,36 @@ textoP2.innerText = "Player2";
 foot.appendChild(textoP2);
 foot.appendChild(botãoAbaixo2);
 //Mateus - Aperecer fichas no click no Tabuleiro
-mainGame.addEventListener("click",diskFall);
-function diskFall (event){
+mainGame.addEventListener("click", diskFall);
+
+let arrayElementos = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+
+function diskFall(event) {
     let colunaInteira = event.path[1]; //ColunaArray
     let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
     let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
     cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
-    while (cell.childElementCount === 1){
-        elementoY --
+    while (cell.childElementCount === 1) {
+        elementoY--
         cell = event.path[1].children[elementoY]
-    }    
-    if (cell.childElementCount === 0 && colunaInteira.className === "coluna"){
-        if(count%2 === 0){
+    }
+    console.log(event.path[1])
+
+    if (cell.childElementCount === 0 && colunaInteira.className === "coluna") {
+        if (count % 2 === 0) {
             const player1 = document.createElement('div');
             player1.classList.add('player1')
             cell.appendChild(player1);
             count++
-        } else if (count%2 === 1){
+        } else if (count % 2 === 1) {
             const player2 = document.createElement('div');
             player2.classList.add('player2')
             cell.appendChild(player2);
@@ -94,18 +107,54 @@ function diskFall (event){
         }
     }
 }
+2)
 
 // Modal
 let resposta = document.getElementById('informacao')
 resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
-function audioexterno(){
-let audio = document.getElementById('abertura');
-audio.volume = 0.1
-audio.play()
-}audioexterno()
 
-botaoIniciar.addEventListener('click',function(){
+function audioexterno() {
+    let audio = document.getElementById('abertura');
+    audio.volume = 0.1
+    audio.play()
+}
+audioexterno()
+
+botaoIniciar.addEventListener('click', function () {
     console.log('amigo estou aqui')
     janelamodal.style.visibility = "hidden";
 
 })
+
+// let arrayElementos = [
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0]
+// ]
+function vitoriaDiagonal() {
+
+    for (let coluna = 0; coluna < arrayElementos[coluna]; coluna++) {
+
+        // itere cada célula na linha
+        for (let linha = 0; linha < arrayElementos[coluna][linha]; linha++) {
+            cell = arrayElementos[coluna][linha];
+
+            // Checa apenas se a célula estiver preenchida
+            if (cell === 1) {
+
+                // Checa as próximas duas células para o mesmo valor
+                if (cell === arrayElementos[coluna + 1][linha + 1] && cell === arrayElementos[coluna + 2][linha + 2] && cell === arrayElementos[coluna + 3][linha + 3]) {
+                    console.log('vitoria na diagonal com salsicha')
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[coluna + 1][linha + 1] && cell === arrayElementos[coluna + 2][linha + 2] && cell === arrayElementos[coluna + 3][linha + 3]) {
+                    console.log('vitoria na diagonal com scooby')
+                }
+            }
+        }
+    }
+}
