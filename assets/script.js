@@ -54,6 +54,9 @@ function gerandoMapa() {
 
 gerandoMapa()
 
+
+// trocar de class para o Player
+
 // Mateus Footer 
 let botãoAbaixo1 =document.createElement("button");
 let botãoAbaixo2 = document.createElement("button");
@@ -72,9 +75,11 @@ foot.appendChild(botãoAbaixo2);
 //Mateus - Aperecer fichas no click no Tabuleiro
 mainGame.addEventListener("click",diskFall);
 function diskFall (event){
+    let theJogo = event.path[2].children.length
     let colunaInteira = event.path[1]; //ColunaArray
     let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
     let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
+    let elementoX = colunaInteira.id
     cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
     while (cell.childElementCount === 1){
         elementoY --
@@ -85,13 +90,16 @@ function diskFall (event){
             const player1 = document.createElement('div');
             player1.classList.add('player1')
             cell.appendChild(player1);
+            arrayElementos[elementoX[6]][elementoY] = 1
             count++
         } else if (count%2 === 1){
             const player2 = document.createElement('div');
             player2.classList.add('player2')
             cell.appendChild(player2);
+            arrayElementos[elementoX[6]][elementoY] = 2
             count++
         }
+        console.log(arrayElementos)
     }
 }
 
