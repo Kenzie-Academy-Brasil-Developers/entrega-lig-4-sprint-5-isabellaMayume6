@@ -88,10 +88,10 @@ function vitoriaVertical(resultMap,colunasMap){
     for(let i = 0; i < 6;i++){
        newMap.push(resultMap[colunasMap][i])
 
-       for(let i = 0; i < 4;i++){
-           if(newMap[i+1] === newMap[i] &&
-              newMap[i+2] === newMap[i] &&
-              newMap[i+3] === newMap[i] &&
+       for(let j = 0; j < 4;j++){
+           if(newMap[i] === newMap[j+1] &&
+              newMap[j] === newMap[j+2] &&
+              newMap[i] === newMap[j+3] &&
               newMap[i] !== 0){
                   if(newMap[i] === 'player1'){
                       let text = 'Player 1'
