@@ -38,6 +38,7 @@ body{
     border-radius: 20%;
     border: 2px;
     margin: 2.5px;
+    animation: salsichadeslizando 1s;
 }
 
 .player2 {
@@ -50,6 +51,7 @@ body{
     height: 45px;
     border-radius: 20%;
     border: 2px;
+    animation: scoobydeslizando 1s;
 }
 /* Modal */
 #janela-modal{
@@ -122,8 +124,26 @@ body{
     margin: 2.5px;
 }
 footer {
+
     visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* TESTE */
+@keyframes salsichadeslizando{
+    from {
+      transform: translateY(-150px);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+@keyframes scoobydeslizando{
+    from {
+      transform: translateY(-150px);
+    }
+    to {
+      transform: translateY(0);
+    }
 }
