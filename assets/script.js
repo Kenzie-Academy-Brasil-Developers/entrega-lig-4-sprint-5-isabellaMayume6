@@ -2,6 +2,7 @@
 let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
+
 let cell = 0
 
 
@@ -91,6 +92,8 @@ function diskFall (event){
             cell.appendChild(player2);
             count++
         }
+    }
+}
 
 // Modal
 let resposta = document.getElementById('informacao')
@@ -100,8 +103,9 @@ let audio = document.getElementById('abertura');
 audio.volume = 0.1
 audio.play()
 }audioexterno()
+
 botaoIniciar.addEventListener('click',function(){
+    console.log('amigo estou aqui')
     janelamodal.style.visibility = "hidden";
+
 })
-    }
-}
