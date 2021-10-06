@@ -3,7 +3,7 @@ let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
 
-let celula = 0
+let cell = 0
 
 
 // discos yasmin
@@ -167,24 +167,70 @@ function diskFall(event) {
             count++
         }
     }
-
+    vitoriaHorizoltal()
     vitoriaDiagonal()
+    vitoriaVertical()
+   
 }
 
+
+function vitoriaVertical(){
+    const edgeX = arrayElementos[0].length - 3;
+    const edgeY = arrayElementos.length - 3;
+
+    for (let y = 0; y < 6; y++) {
+        console.log('primeiro for')
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+            console.log('segundo for')
+
+             cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    alert('jogador salsicha venceu')
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    alert('jogador scooby-doo venceu')
+                }
+            }
+        }
+    }
+}
+
+function vitoriaHorizoltal(){
+    const edgeX = arrayElementos[0].length - 3;
+    const edgeY = arrayElementos.length - 3;
+
+    for (let y = 0; y < arrayElementos.length; y++) {
+      
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+          
+             cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    alert('jogador salsicha venceu')
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    alert('jogador scooby-doo venceu')
+                }
+            }
+        }
+    }
 }
 
 // Modal
-let resposta = document.getElementById('informacao')
-resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
-function audioexterno(){
-let audio = document.getElementById('abertura');
-audio.volume = 0.1
-audio.play()
-}audioexterno()
+// let resposta = document.getElementById('informacao')
+// resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
+// function audioexterno(){
+// let audio = document.getElementById('abertura');
+// audio.volume = 0.1
+// audio.play()
+// }
+// //audioexterno()
 
-botaoIniciar.addEventListener('click',function(){
-    console.log('amigo estou aqui')
-    janelamodal.style.visibility = "hidden";
-    foot.style.visibility = "inherit"
-})
-
+// botaoIniciar.addEventListener('click',function(){
+//     console.log('amigo estou aqui')
+//     janelamodal.style.visibility = "hidden";
+//     foot.style.visibility = "inherit"
+// })
