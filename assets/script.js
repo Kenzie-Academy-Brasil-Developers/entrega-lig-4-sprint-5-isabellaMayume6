@@ -47,9 +47,21 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
+
+//Mateus Escolher a cor dos discos :
+// let contadorCor1 = 0
+// let contadorCor2 = 1
+// let chooseDisk1 = document.createElement("button");
+// let chooseDisk2 = document.createElement("button");
+// function personagem (event){
+//     if (contador1 !== contador2){
+
+//     }
+// }
+
+
 //Mateus - Aperecer fichas no click no Tabuleiro
 document.body.addEventListener("click",diskFall);
-
 function diskFall (event){
     let elementoClick = event.path[0]; //Elemento clicado
     let colunaInteira = event.path[1]; //ColunaArray

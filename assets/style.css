@@ -32,16 +32,17 @@ body {
 
 .player1 {
     position: absolute;
-
+    background-image: url();
     background-color: blue;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: 2px;
-    }
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px;
+}
 
 .player2 {
     position: absolute;
+    background-image: url();
     background-color: red;
     width: 45px;
     height: 45px;
