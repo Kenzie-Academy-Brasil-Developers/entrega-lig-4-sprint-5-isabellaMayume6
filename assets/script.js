@@ -2,6 +2,8 @@
 let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
+let cell = 0
+
 
 // discos yasmin
 const player1 = document.createElement('div');
@@ -11,6 +13,7 @@ player1.classList.add('player1')
 const player2 = document.createElement('div');
 player2.classList.add('player2')
 // document.body.appendChild(player2)
+
 
 
 // ---------------- GERANDO MAPA ------------------//
@@ -49,16 +52,34 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
-//Mateus - Aperecer fichas no click no Tabuleiro
-document.body.addEventListener("click",diskFall);
 
+// Mateus Footer 
+let botãoAbaixo1 =document.createElement("button");
+let botãoAbaixo2 = document.createElement("button");
+let foot = document.createElement("footer");
+document.body.appendChild(foot);
+foot.appendChild(player1);
+let textoP1 = document.createElement("p");
+textoP1.innerText = "Player1"
+foot.appendChild(textoP1);
+foot.appendChild(botãoAbaixo1);
+foot.appendChild(player2);
+let textoP2 = document.createElement("p");
+textoP2.innerText = "Player2";
+foot.appendChild(textoP2);
+foot.appendChild(botãoAbaixo2);
+//Mateus - Aperecer fichas no click no Tabuleiro
+mainGame.addEventListener("click",diskFall);
 function diskFall (event){
-    let elementoClick = event.path[0]; //Elemento clicado
     let colunaInteira = event.path[1]; //ColunaArray
     let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
     let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
-    let cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
-    if (cell.childElementCount === 0 && cell.className === "linha"){
+    cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
+    while (cell.childElementCount === 1){
+        elementoY --
+        cell = event.path[1].children[elementoY]
+    }    
+    if (cell.childElementCount === 0 && colunaInteira.className === "coluna"){
         if(count%2 === 0){
             const player1 = document.createElement('div');
             player1.classList.add('player1')
@@ -70,29 +91,7 @@ function diskFall (event){
             cell.appendChild(player2);
             count++
         }
-    }else {
-        console.log(elementoY)
-        while (cell.childElementCount === 1){
-            elementoY--
-            cell = event.path[1].children[elementoY];
-            if (cell.childElementCount === 0){
-                if(count%2 === 0){
-                    const player1 = document.createElement('div');
-                    player1.classList.add('player1')
-                    cell.appendChild(player1);
-                    count++
-                    break
-                } else if (count%2 === 1){
-                    const player2 = document.createElement('div');
-                    player2.classList.add('player2')
-                    cell.appendChild(player2);
-                    count++
-                    break
-                }               
-            }
-        }  
-    } 
-}
+
 // Modal
 let resposta = document.getElementById('informacao')
 resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
@@ -104,3 +103,5 @@ audio.play()
 botaoIniciar.addEventListener('click',function(){
     janelamodal.style.visibility = "hidden";
 })
+    }
+}
