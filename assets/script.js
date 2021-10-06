@@ -107,5 +107,5 @@ audio.play()
 botaoIniciar.addEventListener('click',function(){
     console.log('amigo estou aqui')
     janelamodal.style.visibility = "hidden";
-
+    foot.style.visibility = "inherit"
 })
