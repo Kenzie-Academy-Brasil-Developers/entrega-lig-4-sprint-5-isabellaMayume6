@@ -50,6 +50,75 @@ body{
     height: 45px;
     border-radius: 20%;
     border: 2px;
+}
+/* Modal */
+#janela-modal{
+    visibility:inherit; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #F5A623;
+}
+#modal-resposta{
+    z-index: 1;
+    width: 300px;
+    height: 300px;
+    margin-top: 130px;
+    background: rgba( 245, 166, 35, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#img-grupo{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 200px;
+}
+#informacao{
+    width: 230px;
+    height: 230px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba( 193, 16, 16, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13px );
+    -webkit-backdrop-filter: blur( 13px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
+}
+#iniciar-jogo{
+    background-color: #eeab40;
+    border-radius: 10px;
+    font-size: 16px;
+    border-style: revert;
+    
+}
+#player1 img{
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    
+}
+#player2 img{
+    width: 50px;
+    height: 50px;
     margin: 2.5px;
 }
 footer {
