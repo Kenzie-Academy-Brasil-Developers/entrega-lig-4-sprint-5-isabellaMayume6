@@ -73,17 +73,72 @@ botaoIniciar.addEventListener('click', function () {
     janelamodal.style.visibility = "hidden";
 
 })
-
+botaoPlayAgain.addEventListener('click', function(){
+    document.location.reload() 
+})
+// let arrayElementos = [
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0],
+//     [0, 0, 0, 0, 0, 0]
+// ]
 
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
+function vitoriaVertical(){
+    // const edgeX = arrayElementos[0].length - 3;
+    // const edgeY = arrayElementos.length - 3;
+        
+        for (let y = 0; y < 6; y++) {
+            console.log('primeiro for')
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+            console.log('segundo for')
+
+            cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    modalVitoriaSalsicha.style.visibility = "inherit"
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    modalVitoriaScooby.style.visibility = "inherit"
+                }
+            }
+        }
+    }
+}
+function vitoriaHorizoltal(){
+    const edgeX = arrayElementos[0].length - 3;
+    const edgeY = arrayElementos.length - 3;
+    // modal vitória do scooby
+    
+    for (let y = 0; y < arrayElementos.length; y++) {
+        
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+            
+            cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    modalVitoriaSalsicha.style.visibility = "inherit"
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    modalVitoriaScooby.style.visibility = "inherit"
+                }
+            }
+        }
+    }
+}
+
 
 function vitoriaDiagonal() {
-
-
+    
     for (let y = 3; y < arrayElementos.length; y++) {
         for (let x = 0; x < edgeX; x++) {
-
+            
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
@@ -97,7 +152,7 @@ function vitoriaDiagonal() {
             }
         }
     }
-
+    
     for (let y = 0; y < edgeY; y++) {
         for (let x = 0; x < edgeX; x++) {
             cell = arrayElementos[y][x];
@@ -114,17 +169,17 @@ function vitoriaDiagonal() {
         }
     }
 }
-
-// let arrayElementos = [
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0]
-// ]
-
+function draw (){
+    let marks = 0
+    for (let i = 0; i < arrayElementos.length; i++){
+        if (arrayElementos[i][0] !== 0){
+            marks++
+        }
+    }
+    if (marks === 7){
+        return "empatou"
+    }
+}
 function diskFall(event) {
     let theJogo = event.path[2].children.length
     let colunaInteira = event.path[1]; //ColunaArray
@@ -152,58 +207,10 @@ function diskFall(event) {
             count++
         }
     }
+    console.log(draw())
     vitoriaHorizoltal()
     vitoriaDiagonal()
     vitoriaVertical()
-   
+    draw ()
 }
-function vitoriaVertical(){
-    const edgeX = arrayElementos[0].length - 3;
-    const edgeY = arrayElementos.length - 3;
-
-    for (let y = 0; y < 6; y++) {
-        console.log('primeiro for')
-        for (let x = 0; x < arrayElementos[y].length; x++) {
-            console.log('segundo for')
-
-             cell = arrayElementos[y][x];
-            if (cell === 1) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
-                }
-            } else if (cell === 2) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
-                }
-            }
-        }
-    }
-}
-botaoPlayAgain.addEventListener('click', function(){
-    document.location.reload()
- })
-function vitoriaHorizoltal(){
-    const edgeX = arrayElementos[0].length - 3;
-    const edgeY = arrayElementos.length - 3;
-    // modal vitória do scooby
- 
-    for (let y = 0; y < arrayElementos.length; y++) {
-      
-        for (let x = 0; x < arrayElementos[y].length; x++) {
-          
-             cell = arrayElementos[y][x];
-            if (cell === 1) {
-                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
-                }
-            } else if (cell === 2) {
-                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
-                }
-            }
-        }
-    }
-}
- 
-
 
