@@ -7,6 +7,7 @@ let modalEmpate = document.getElementById('modal-empate')
 let audio;
 let count = 0
 let cell = 0
+let win = 0
 
 const player1 = document.createElement('div');
 player1.classList.add('player1')
@@ -131,17 +132,17 @@ function diskFall(event) {
             player1.classList.add('player1')
             cell.appendChild(player1);
             arrayElementos[elementoX[6]][elementoY] = 1
-            count++
+            
         } else if (count % 2 === 1) {
             const player2 = document.createElement('div');
             player2.classList.add('player2')
             cell.appendChild(player2);
             arrayElementos[elementoX[6]][elementoY] = 2
-            count++
-        }
-    }
 
-    condicaoVitoria()
+        }
+        count++
+    } 
+    condicaoVitoria()    
     draw()
 }
 
@@ -155,16 +156,24 @@ function condicaoVitoria() {
         for (let x = 0; x < edgeX; x++) {
             let cell = arrayElementos[y][x];
             if (cell === 1) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaSalsicha.style.visibility = 'inherit'
-                    audio.pause()
-                    audioVitoriaSalsicha()
+               if (win < 1){
+                   if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                       modalVitoriaSalsicha.style.visibility = 'inherit'
+                       audio.pause()
+                       audioVitoriaSalsicha()
+                       win++
+                       
+                    }
                 }
             } else if (cell === 2) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaScooby.style.visibility = 'inherit'
-                    audio.pause()
-                    audioVitoriaScooby()
+                if(win < 1){
+                    if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                        win++
+                        modalVitoriaScooby.style.visibility = 'inherit'
+                        audio.pause()
+                        audioVitoriaScooby()
+                        
+                    }
                 }
             }
         }
@@ -174,16 +183,24 @@ function condicaoVitoria() {
         for (let x = 0; x < arrayElementos[0].length; x++) {
             cell = arrayElementos[y][x];
             if (cell === 1) {
-                if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
-                    modalVitoriaSalsicha.style.visibility = 'inherit'
-                    audio.pause()
-                    audioVitoriaSalsicha()
+                if(win < 1){
+                    if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
+                        win++
+                        modalVitoriaSalsicha.style.visibility = 'inherit'
+                        audio.pause()
+                        audioVitoriaSalsicha()
+                        
+                    }
                 }
             } else if (cell === 2) {
-                if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
-                    modalVitoriaScooby.style.visibility = 'inherit'
-                    audio.pause()
-                    audioVitoriaScooby()
+                if(win < 1){
+                    if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
+                        win++
+                        modalVitoriaScooby.style.visibility = 'inherit'
+                        audio.pause()
+                        audioVitoriaScooby()
+                        
+                    }
                 }
             }
         }
