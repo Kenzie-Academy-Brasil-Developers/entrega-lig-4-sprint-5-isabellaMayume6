@@ -91,7 +91,9 @@ function diskFall(event) {
 
     while (cell.childElementCount === 1) {
         elementoY--
-        cell = event.path[1].children[elementoY]
+        if (elementoY >= 0){
+            cell = event.path[1].children[elementoY]
+        }
     }
 
     if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
