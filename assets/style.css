@@ -186,6 +186,20 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     background-color: #b9f579;
     border-radius: 30px;
 }
+#modal-vitoria-salsicha{
+    visibility: hidden;
+    background-color: #b9f579;
+    position: fixed;
+    top:0;
+    left:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
 @keyframes salsichadeslizando{
     from {
       transform: translateY(-150px);
