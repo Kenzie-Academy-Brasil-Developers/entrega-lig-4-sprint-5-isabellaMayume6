@@ -87,7 +87,7 @@ function vitoriaDiagonal() {
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
-                    alert('jogador salsicha venceu')
+                    // alert('jogador salsicha venceu')
                     modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
@@ -103,7 +103,7 @@ function vitoriaDiagonal() {
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
-                    alert('jogador salsicha venceu!')
+                    // alert('jogador salsicha venceu!')
                     modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
