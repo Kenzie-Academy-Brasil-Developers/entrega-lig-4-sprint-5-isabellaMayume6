@@ -5,7 +5,7 @@ const janelamodal = document.getElementById('janela-modal')
 let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 
-let celula = 0
+let cell = 0
 
 
 // discos yasmin
@@ -150,11 +150,59 @@ function diskFall(event) {
             count++
         }
     }
-
+    vitoriaHorizoltal()
     vitoriaDiagonal()
+    vitoriaVertical()
+   
 }
+function vitoriaVertical(){
+    const edgeX = arrayElementos[0].length - 3;
+    const edgeY = arrayElementos.length - 3;
+
+    for (let y = 0; y < 6; y++) {
+        console.log('primeiro for')
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+            console.log('segundo for')
+
+             cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    alert('jogador salsicha venceu')
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    alert('jogador scooby-doo venceu')
+                }
+            }
+        }
+    }
+}
+
+function vitoriaHorizoltal(){
+    const edgeX = arrayElementos[0].length - 3;
+    const edgeY = arrayElementos.length - 3;
+
  // modal vitória do scooby
  botaoPlayAgain.addEventListener('click', function(){
     modalVitoriaScooby.style.visibility = "hidden";
  })
+
+
+    for (let y = 0; y < arrayElementos.length; y++) {
+      
+        for (let x = 0; x < arrayElementos[y].length; x++) {
+          
+             cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    alert('jogador salsicha venceu')
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
+                    alert('jogador scooby-doo venceu')
+                }
+            }
+        }
+    }
+}
 
