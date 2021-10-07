@@ -109,6 +109,7 @@ function diskFall(event) {
             count++
         }
     }
+
     condicaoVitoria()
     draw()
 }
@@ -117,8 +118,9 @@ function diskFall(event) {
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
 
-
+setInterval(
 function condicaoVitoria() {
+
     for (let y = 0; y < arrayElementos.length; y++) {
         for (let x = 0; x < edgeX; x++) {
             let cell = arrayElementos[y][x];
@@ -179,9 +181,7 @@ function condicaoVitoria() {
         }
     }
 }
-
-
-
+, 1000);
 botaoPlayAgain.addEventListener('click', function () {
     document.location.reload()
 })
