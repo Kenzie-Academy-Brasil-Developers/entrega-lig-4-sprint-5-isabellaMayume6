@@ -2,6 +2,8 @@
 let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
+let botaoPlayAgain = document.getElementById('jogarnovamente')
+let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 
 let cell = 0
 
@@ -55,20 +57,20 @@ function gerandoMapa() {
 gerandoMapa()
 
 // Mateus Footer 
-let botãoAbaixo1 =document.createElement("button");
-let botãoAbaixo2 = document.createElement("button");
-let foot = document.createElement("footer");
-document.body.appendChild(foot);
-foot.appendChild(player1);
-let textoP1 = document.createElement("p");
-textoP1.innerText = "Player1"
-foot.appendChild(textoP1);
-foot.appendChild(botãoAbaixo1);
-foot.appendChild(player2);
-let textoP2 = document.createElement("p");
-textoP2.innerText = "Player2";
-foot.appendChild(textoP2);
-foot.appendChild(botãoAbaixo2);
+// let botãoAbaixo1 =document.createElement("button");
+// let botãoAbaixo2 = document.createElement("button");
+// let foot = document.createElement("footer");
+// document.body.appendChild(foot);
+// foot.appendChild(player1);
+// let textoP1 = document.createElement("p");
+// textoP1.innerText = "Player1"
+// foot.appendChild(textoP1);
+// foot.appendChild(botãoAbaixo1);
+// foot.appendChild(player2);
+// let textoP2 = document.createElement("p");
+// textoP2.innerText = "Player2";
+// foot.appendChild(textoP2);
+// foot.appendChild(botãoAbaixo2);
 //Mateus - Aperecer fichas no click no Tabuleiro
 mainGame.addEventListener("click",diskFall);
 function diskFall (event){
@@ -95,7 +97,7 @@ function diskFall (event){
     }
 }
 
-// Modal
+// Modal Inicial
 let resposta = document.getElementById('informacao')
 resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
 function audioexterno(){
@@ -107,5 +109,9 @@ audio.play()
 botaoIniciar.addEventListener('click',function(){
     console.log('amigo estou aqui')
     janelamodal.style.visibility = "hidden";
-    foot.style.visibility = "inherit"
+    // foot.style.visibility = "inherit"
 })
+ // modal vitória do scooby
+ botaoPlayAgain.addEventListener('click', function(){
+    modalVitoriaScooby.style.visibility = "hidden";
+ })
