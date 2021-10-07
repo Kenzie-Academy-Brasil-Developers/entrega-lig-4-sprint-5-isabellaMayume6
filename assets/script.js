@@ -68,18 +68,7 @@ botaoIniciar.addEventListener('click', function () {
 })
 
 
-function draw() {
-    let marks = 0
-    for (let i = 0; i < arrayElementos.length; i++) {
-        if (arrayElementos[i][0] !== 0) {
-            marks++
-        }
-    }
-    if (marks === 7) {
 
-        return console.log('empate')
-    }
-}
 
 
 function diskFall(event) {
@@ -88,12 +77,10 @@ function diskFall(event) {
     let elementoY = colunaTamanho - 1;
     let elementoX = colunaInteira.id
     cell = event.path[1].children[elementoY];
-
-    while (cell.childElementCount === 1) {
-        elementoY--
-        if (elementoY >= 0){
-            cell = event.path[1].children[elementoY]
-        }
+    console.log(colunaInteira.children[0].childElementCount)
+    while (cell.childElementCount === 1 && colunaInteira.children[0].childElementCount !== 1) {        
+            elementoY--
+            cell = event.path[1].children[elementoY] 
     }
 
     if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
@@ -111,10 +98,21 @@ function diskFall(event) {
             count++
         }
     }
-    condicaoVitoria()
+    // condicaoVitoria()
     draw()
 }
+function draw() {
+    let marks = 0
+    for (let i = 0; i < arrayElementos.length; i++) {
+        if (arrayElementos[i][0] !== 0) {
+            marks++
+        }
+    }
+    if (marks === 7) {
 
+        return console.log('empate')
+    }
+}
 
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
