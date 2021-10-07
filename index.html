@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/style.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <main id="jogo"></main>
+    <main id="jogo">
+        <div id="imgjogo">
+            <img src="./assets/img/turma-jogo.png" alt="">
+        </div>
+    </main>
     <section id="janela-modal">
-        <audio id="abertura" src="./assets/audios/abertura.mp3" loop></audio>
+        <audio id="abertura" src="./assets/audios/abertura.mp3"></audio>
         <img src="./assets/img/turma-do-scooby.png" alt="" id="img-grupo" >
         <div id="modal-resposta">
             <span id="informacao"></span>
-            <button id="iniciar-jogo">Vamos jogar!</button>
+        </div>
+        <button id="iniciar-jogo">Vamos jogar!</button>
+    </section>
+    <section id="modal-vitoria-scooby">
+        <img src="./assets/img/scoobywinne.png" alt="">
+        <div id="modal-mensagem">
+            <span id="mensagem">
+                <p>O Scooby Venceu!</p>
+                <button id="jogarnovamente">Jogar novamente</button>
+            </span>
         </div>
     </section>
+    <section id="modal-vitoria-salsicha">
+        <img src="./assets/img/salsicha.png" alt="">
+        <div id="modal-mensagem">
+            <span id="mensagem">
+                <p>O Salsicha Venceu!</p>
+                <button id="jogarnovamente" onclick="location.reload()">Jogar novamente</button>
+            </span>
+        </div>
+    </section>
+
     <script type="text/javascript" src="./assets/script.js"></script>
 </body>
 
