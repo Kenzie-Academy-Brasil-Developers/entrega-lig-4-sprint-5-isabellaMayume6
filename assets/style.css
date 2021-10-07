@@ -1,15 +1,17 @@
-body{
+body {
     height: 100vh;
-    background: rgb(244,173,48);
-    background: linear-gradient(90deg, rgba(244,173,48,1) 0%, rgba(198,235,67,1) 43%, rgba(166,222,199,1) 100%);
+    background: rgb(244, 173, 48);
+    background: linear-gradient(90deg, rgba(244, 173, 48, 1) 0%, rgba(198, 235, 67, 1) 43%, rgba(166, 222, 199, 1) 100%);
 }
-.coluna{
+
+.coluna {
     display: flex;
     flex-direction: column;
     width: 50px;
     height: 100%;
 }
-.linha{
+
+.linha {
     width: 50px;
     height: 50px;
     border: 1px solid black;
@@ -22,6 +24,7 @@ body{
     flex-direction: row;
 
 }
+
 #jogo {
     margin: 0 auto;
     display: flex;
@@ -30,7 +33,7 @@ body{
 }
 
 .player1 {
-    background:  no-repeat center;
+    background: no-repeat center;
     background-size: 45px;
     background-image: url(../assets/img/salsichascare.png);
     width: 45px;
@@ -39,10 +42,11 @@ body{
     border: 2px;
     margin: 2.5px;
     animation: salsichadeslizando 1s;
+    pointer-events: none;
 }
 
 .player2 {
-    background:  no-repeat center;
+    background: no-repeat center;
     background-size: 40px;
     background-image: url(../assets/img/scoobyscare.png);
     width: 45px;
@@ -50,9 +54,11 @@ body{
     border-radius: 20%;
     border: 2px;
     animation: scoobydeslizando 1s;
+    pointer-events: none;
 }
-#janela-modal{
-    visibility:inherit; 
+
+#janela-modal {
+    visibility: inherit;
     position: fixed;
     top: 0;
     left: 0;
@@ -65,61 +71,68 @@ body{
     height: 100%;
     background-color: #eea734;
 }
-#modal-resposta{
+
+#modal-resposta {
     z-index: 1;
     width: 300px;
     height: 300px;
     margin-top: 130px;
-    background: rgba( 245, 166, 35, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    background: rgba(245, 166, 35, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     align-content: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#img-grupo{
+
+#img-grupo {
     position: absolute;
     width: 300px;
     height: 300px;
     margin-bottom: 200px;
 }
-#informacao{
+
+#informacao {
     width: 230px;
     height: 230px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: rgba( 193, 16, 16, 0.6 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 13px );
-    -webkit-backdrop-filter: blur( 13px );
+    background: rgba(193, 16, 16, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
 }
-#iniciar-jogo{
+
+#iniciar-jogo {
     background-color: #eeab40;
     border-radius: 10px;
     font-size: 16px;
     border-style: revert;
-    
+
 }
-#player1 img{
+
+#player1 img {
     width: 50px;
     height: 50px;
     top: 50px;
-    
+
 }
-#player2 img{
+
+#player2 img {
     width: 50px;
     height: 50px;
     margin: 2.5px;
 }
+
 footer {
 
     visibility: hidden;
@@ -127,35 +140,41 @@ footer {
     justify-content: center;
     align-items: center;
 }
-.linha{
+
+.linha {
     background-color: orange;
 }
-#jogoClass{
-background: rgba( 245, 166, 35, 0.45 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+#jogoClass {
+    background: rgba(245, 166, 35, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
 }
-#imgjogo{
+
+#imgjogo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#imgjogo img{
+
+#imgjogo img {
     position: absolute;
     width: 340px;
     height: 320px;
     margin-bottom: 200px;
 }
-#modal-vitoria-scooby{
+
+#modal-vitoria-scooby {
     visibility: hidden;
     background-color: #b9f579;
     position: fixed;
-    top:0;
-    left:0;
-    padding:0;
+    top: 0;
+    left: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,7 +183,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 100%;
 
 }
-#modal-mensagem{
+
+#modal-mensagem {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -176,24 +196,28 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     border: 2px solid black;
     border-radius: 30px;
 }
-#modal-vitoria-scooby img{
+
+#modal-vitoria-scooby img {
     width: 160px;
     margin-right: 38px;
 }
-#mensagem{
+
+#mensagem {
     text-align: center;
 }
-#jogarnovamente{
+
+#jogarnovamente {
     background-color: #b9f579;
     border-radius: 30px;
 }
-#modal-vitoria-salsicha{
+
+#modal-vitoria-salsicha {
     visibility: hidden;
     background-color: #b9f579;
     position: fixed;
-    top:0;
-    left:0;
-    padding:0;
+    top: 0;
+    left: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -236,18 +260,22 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 @keyframes salsichadeslizando{
+
     from {
-      transform: translateY(-150px);
+        transform: translateY(-150px);
     }
+
     to {
-      transform: translateY(0);
+        transform: translateY(0);
     }
 }
-@keyframes scoobydeslizando{
+
+@keyframes scoobydeslizando {
     from {
-      transform: translateY(-150px);
+        transform: translateY(-150px);
     }
+
     to {
-      transform: translateY(0);
+        transform: translateY(0);
     }
 }

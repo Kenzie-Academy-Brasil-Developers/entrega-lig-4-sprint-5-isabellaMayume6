@@ -1,25 +1,17 @@
-//Global Var
-let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
 let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 let modalVitoriaSalsicha = document.getElementById('modal-vitoria-salsicha')
+let count = 0
 let cell = 0
 
-
-// discos yasmin
 const player1 = document.createElement('div');
 player1.classList.add('player1')
-// document.body.appendChild(player1)
 
 const player2 = document.createElement('div');
 player2.classList.add('player2')
-// document.body.appendChild(player2)
 
-
-
-// ---------------- GERANDO MAPA ------------------//
 
 let arrayElementos = [
     [0, 0, 0, 0, 0, 0],
@@ -55,10 +47,10 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
-//Mateus - Aperecer fichas no click no Tabuleiro
-mainGame.addEventListener("click", diskFall);
 
-// Modal
+const clickgame = document.getElementById('jogoClass')
+clickgame.addEventListener("click", diskFall);
+
 let resposta = document.getElementById('informacao')
 resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
 
@@ -67,27 +59,42 @@ function audioexterno() {
     audio.volume = 0.1
     audio.play()
 }
+
 audioexterno()
 
 botaoIniciar.addEventListener('click', function () {
-    janelamodal.style.visibility = "hidden";
+    janelamodal.style.visibility = 'hidden';
 
 })
 
 
+function draw() {
+    let marks = 0
+    for (let i = 0; i < arrayElementos.length; i++) {
+        if (arrayElementos[i][0] !== 0) {
+            marks++
+        }
+    }
+    if (marks === 7) {
+
+        return console.log('empate')
+    }
+}
+
+
 function diskFall(event) {
-    let theJogo = event.path[2].children.length
-    let colunaInteira = event.path[1]; //ColunaArray
-    let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
-    let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
+    let colunaInteira = event.path[1];
+    let colunaTamanho = colunaInteira.children.length;
+    let elementoY = colunaTamanho - 1;
     let elementoX = colunaInteira.id
-    cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
+    cell = event.path[1].children[elementoY];
+
     while (cell.childElementCount === 1) {
         elementoY--
         cell = event.path[1].children[elementoY]
     }
 
-    if (cell.childElementCount === 0 && colunaInteira.className === "coluna") {
+    if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
         if (count % 2 === 0) {
             const player1 = document.createElement('div');
             player1.classList.add('player1')
@@ -102,26 +109,28 @@ function diskFall(event) {
             count++
         }
     }
-    vitoriaDiagonal()
 
+    condicaoVitoria()
+    draw()
 }
+
 
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
 
 setInterval(
-function vitoriaDiagonal() {
-    // ------------------- verificação diagonal--------------------//
+function condicaoVitoria() {
+
     for (let y = 0; y < arrayElementos.length; y++) {
         for (let x = 0; x < edgeX; x++) {
             let cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
+                    modalVitoriaScooby.style.visibility = 'inherit'
                 }
             }
         }
@@ -132,11 +141,11 @@ function vitoriaDiagonal() {
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
+                    modalVitoriaScooby.style.visibility = 'inherit'
                 }
             }
         }
@@ -147,11 +156,11 @@ function vitoriaDiagonal() {
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
+                    modalVitoriaScooby.style.visibility = 'inherit'
                 }
             }
         }
@@ -162,11 +171,11 @@ function vitoriaDiagonal() {
             cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
+                    modalVitoriaScooby.style.visibility = 'inherit'
                 }
             }
         }
