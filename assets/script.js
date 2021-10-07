@@ -77,8 +77,7 @@ function draw() {
         }
     }
     if (marks === 7) {
-
-        modalEmpate.style.visibility = 'inherit'
+        modalEmpate.style.visibility = 'inherit';
     }
 }
 
@@ -182,7 +181,7 @@ function condicaoVitoria() {
         }
     }
 }
-, 1000);
+, 1000)
 botaoPlayAgain.addEventListener('click', function () {
     document.location.reload()
 })
