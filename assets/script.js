@@ -4,7 +4,7 @@ const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
 let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
-
+let modalVitoriaSalsicha = document.getElementById('modal-vitoria-salsicha')
 let cell = 0
 
 
@@ -88,10 +88,11 @@ function vitoriaDiagonal() {
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
                     alert('jogador salsicha venceu')
+                    modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
-                    alert('jogador scooby-doo venceu')
+                    modalVitoriaScooby.style.visibility = "inherit"
                 }
             }
         }
@@ -103,10 +104,11 @@ function vitoriaDiagonal() {
             if (cell === 1) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
                     alert('jogador salsicha venceu!')
+                    modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
-                    alert('jogador scooby-doo venceu!')
+                    modalVitoriaScooby.style.visibility = "inherit"
                 }
             }
         }
@@ -167,27 +169,24 @@ function vitoriaVertical(){
              cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    alert('jogador salsicha venceu')
+                    modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    alert('jogador scooby-doo venceu')
+                    modalVitoriaScooby.style.visibility = "inherit"
                 }
             }
         }
     }
 }
-
+botaoPlayAgain.addEventListener('click', function(){
+    document.location.reload()
+ })
 function vitoriaHorizoltal(){
     const edgeX = arrayElementos[0].length - 3;
     const edgeY = arrayElementos.length - 3;
-
- // modal vitória do scooby
- botaoPlayAgain.addEventListener('click', function(){
-    modalVitoriaScooby.style.visibility = "hidden";
- })
-
-
+    // modal vitória do scooby
+ 
     for (let y = 0; y < arrayElementos.length; y++) {
       
         for (let x = 0; x < arrayElementos[y].length; x++) {
@@ -195,14 +194,16 @@ function vitoriaHorizoltal(){
              cell = arrayElementos[y][x];
             if (cell === 1) {
                 if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    alert('jogador salsicha venceu')
+                    modalVitoriaSalsicha.style.visibility = "inherit"
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    alert('jogador scooby-doo venceu')
+                    modalVitoriaScooby.style.visibility = "inherit"
                 }
             }
         }
     }
 }
+ 
+
 
