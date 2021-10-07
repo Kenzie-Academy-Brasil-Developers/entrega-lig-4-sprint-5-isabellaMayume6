@@ -4,6 +4,15 @@ body {
     background: linear-gradient(90deg, rgba(244, 173, 48, 1) 0%, rgba(198, 235, 67, 1) 43%, rgba(166, 222, 199, 1) 100%);
 }
 
+@font-face {
+    font-family: 'Scooby Doo';
+    src: url(../fonts/scoobydoo/scoobydoo.ttf)
+}
+
+header {
+    font-family: 'Scooby Doo';
+}
+
 .coluna {
     display: flex;
     flex-direction: column;

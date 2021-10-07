@@ -84,7 +84,6 @@ function draw() {
     }
     if (marks === 7) {
         audioEmpateFunction()
-        console.log('empate')
         modalEmpate.style.visibility = 'inherit'
     }
 }
