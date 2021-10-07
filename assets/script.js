@@ -4,6 +4,7 @@ let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 let modalVitoriaSalsicha = document.getElementById('modal-vitoria-salsicha')
 let modalEmpate = document.getElementById('modal-empate')
+let audio;
 let count = 0
 let cell = 0
 
@@ -56,14 +57,14 @@ let resposta = document.getElementById('informacao')
 resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O Salsicha Começa!';
 
 function audioexterno() {
-    let audio = document.getElementById('abertura');
+    audio = document.getElementById('abertura');
     audio.volume = 0.1
     audio.play()
 }
 
 function audioEmpateFunction() {
     let audioEmpate = document.getElementById('audioEmpate');
-    audioEmpate.volume = 0.5
+    audioEmpate.volume = 0.8
     audioEmpate.play()
 }
 
@@ -84,6 +85,8 @@ function draw() {
     }
     if (marks === 7) {
         modalEmpate.style.visibility = 'inherit';
+        audio.pause()
+        audioEmpateFunction()
     }
 }
 
@@ -119,7 +122,7 @@ function diskFall(event) {
         }
     }
 
-    condicaoVitoria()
+    // condicaoVitoria()
     draw()
 }
 
