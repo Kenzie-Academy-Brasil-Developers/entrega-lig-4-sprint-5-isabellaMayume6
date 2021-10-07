@@ -68,6 +68,24 @@ function audioEmpateFunction() {
     audioEmpate.play()
 }
 
+function audioVitoriaScooby() {
+    let audioEmpate = document.getElementById('audioVitoriaScooby');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
+function audioColunaCheia() {
+    let audioEmpate = document.getElementById('audioColunaCheia');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
+function audioVitoriaSalsicha() {
+    let audioEmpate = document.getElementById('audioVitoriaSalsicha');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
 
 botaoIniciar.addEventListener('click', function () {
     janelamodal.style.visibility = 'hidden';
@@ -103,6 +121,7 @@ function diskFall(event) {
         cell = event.path[1].children[elementoY]
     }
     if (colunaInteira.children[0].childElementCount === 1) {
+        audioColunaCheia()
         alert("posição inválida, coluna está cheia")
     }
 
@@ -122,7 +141,7 @@ function diskFall(event) {
         }
     }
 
-    scondicaoVitoria()
+    condicaoVitoria()
     draw()
 }
 
@@ -138,10 +157,14 @@ function condicaoVitoria() {
             if (cell === 1) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
                 }
             }
         }
@@ -153,10 +176,14 @@ function condicaoVitoria() {
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
                 }
             }
         }
@@ -168,10 +195,14 @@ function condicaoVitoria() {
             if (cell === 1) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
                 }
             }
         }
@@ -183,10 +214,14 @@ function condicaoVitoria() {
             if (cell === 1) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
                 if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
                 }
             }
         }
