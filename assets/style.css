@@ -229,7 +229,7 @@ footer {
     width:150px
 }
 #modal-empate{
-    /* visibility: hidden; */
+    visibility: hidden;
     background-color: #b9f579;
     position: fixed;
     top:0;

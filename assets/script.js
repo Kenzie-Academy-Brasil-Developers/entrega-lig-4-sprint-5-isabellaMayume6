@@ -3,6 +3,7 @@ const janelamodal = document.getElementById('janela-modal')
 let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 let modalVitoriaSalsicha = document.getElementById('modal-vitoria-salsicha')
+let modalEmpate = document.getElementById('modal-empate')
 let count = 0
 let cell = 0
 
@@ -77,7 +78,7 @@ function draw() {
     }
     if (marks === 7) {
 
-        return console.log('empate')
+        modalEmpate.style.visibility = 'inherit'
     }
 }
 
