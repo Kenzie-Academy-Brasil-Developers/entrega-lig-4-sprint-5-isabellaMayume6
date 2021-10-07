@@ -53,7 +53,7 @@ const clickgame = document.getElementById('jogoClass')
 clickgame.addEventListener("click", diskFall);
 
 let resposta = document.getElementById('informacao')
-resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
+resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O Salsicha Começa!';
 
 function audioexterno() {
     let audio = document.getElementById('abertura');
@@ -61,10 +61,16 @@ function audioexterno() {
     audio.play()
 }
 
-audioexterno()
+function audioEmpateFunction() {
+    let audioEmpate = document.getElementById('audioEmpate');
+    audioEmpate.volume = 0.5
+    audioEmpate.play()
+}
+
 
 botaoIniciar.addEventListener('click', function () {
     janelamodal.style.visibility = 'hidden';
+    audioexterno()
 
 })
 
@@ -77,7 +83,8 @@ function draw() {
         }
     }
     if (marks === 7) {
-
+        audioEmpateFunction()
+        console.log('empate')
         modalEmpate.style.visibility = 'inherit'
     }
 }
@@ -90,9 +97,12 @@ function diskFall(event) {
     let elementoX = colunaInteira.id
     cell = event.path[1].children[elementoY];
 
-    while (cell.childElementCount === 1) {
+    while (cell.childElementCount === 1 && colunaInteira.children[0].childElementCount !== 1) {
         elementoY--
         cell = event.path[1].children[elementoY]
+    }
+    if (colunaInteira.children[0].childElementCount === 1) {
+        alert("posição inválida, coluna está cheia")
     }
 
     if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
@@ -119,7 +129,6 @@ function diskFall(event) {
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
 
-setInterval(
 function condicaoVitoria() {
 
     for (let y = 0; y < arrayElementos.length; y++) {
@@ -182,7 +191,7 @@ function condicaoVitoria() {
         }
     }
 }
-, 1000);
+
 botaoPlayAgain.addEventListener('click', function () {
     document.location.reload()
 })
