@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="shortcut icon" href="#">
+
     <title>Document</title>
 </head>
 
@@ -17,7 +20,7 @@
     </main>
     <section id="janela-modal">
         <audio id="abertura" src="./assets/audios/abertura.mp3"></audio>
-        <img src="./assets/img/turma-do-scooby.png" alt="" id="img-grupo" >
+        <img src="./assets/img/turma-do-scooby.png" alt="" id="img-grupo">
         <div id="modal-resposta">
             <span id="informacao"></span>
         </div>
@@ -41,8 +44,22 @@
             </span>
         </div>
     </section>
+    <section id="modal-empate">
+        <img src="./assets/img/salsicha e scooby em pé.png" alt="">
+        <div id="modal-mensagem-empate">
+            <span id="mensagem">
+                <p>Empatou!</p>
+                <button id="jogarnovamente" onclick="location.reload()">Jogar novamente</button>
+            </span>
+        </div>
+    </section>
 
     <script type="text/javascript" src="./assets/script.js"></script>
+
+    <audio id="audioEmpate" src="./assets/audios/cruzes.mp3"></audio>
+    <audio id="audioVitoriaScooby" src="./assets/audios/vitoria-scooby.mp3"></audio>
+    <audio id="audioVitoriaSalsicha" src="./assets/audios/salsicha-chamando-scooby.mp3"></audio>
+    <audio id="audioColunaCheia" src="./assets/audios/salsicha-o-diabo.mp3"></audio>
 </body>
 
 </html>

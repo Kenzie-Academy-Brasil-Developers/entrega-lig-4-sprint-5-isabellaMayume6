@@ -1,25 +1,19 @@
-//Global Var
-let count = 0;
 const botaoIniciar = document.getElementById('iniciar-jogo')
 const janelamodal = document.getElementById('janela-modal')
 let botaoPlayAgain = document.getElementById('jogarnovamente')
 let modalVitoriaScooby = document.getElementById('modal-vitoria-scooby')
 let modalVitoriaSalsicha = document.getElementById('modal-vitoria-salsicha')
+let modalEmpate = document.getElementById('modal-empate')
+let audio;
+let count = 0
 let cell = 0
 
-
-// discos yasmin
 const player1 = document.createElement('div');
 player1.classList.add('player1')
-// document.body.appendChild(player1)
 
 const player2 = document.createElement('div');
 player2.classList.add('player2')
-// document.body.appendChild(player2)
 
-
-
-// ---------------- GERANDO MAPA ------------------//
 
 let arrayElementos = [
     [0, 0, 0, 0, 0, 0],
@@ -55,89 +49,83 @@ function gerandoMapa() {
 }
 
 gerandoMapa()
-//Mateus - Aperecer fichas no click no Tabuleiro
-mainGame.addEventListener("click", diskFall);
 
-// Modal
+const clickgame = document.getElementById('jogoClass')
+clickgame.addEventListener("click", diskFall);
+
 let resposta = document.getElementById('informacao')
-resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O player1 Começa!';
+resposta.innerText = 'Regras: cada jogador tenta colocar quatro de suas pedras em fila, seja na horizontal, vertical ou diagonal, bloqueando seu adversário para que ele não consiga fazer o mesmo. O Salsicha Começa!';
 
 function audioexterno() {
-    let audio = document.getElementById('abertura');
+    audio = document.getElementById('abertura');
     audio.volume = 0.1
     audio.play()
 }
-audioexterno()
+
+function audioEmpateFunction() {
+    let audioEmpate = document.getElementById('audioEmpate');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
+function audioVitoriaScooby() {
+    let audioEmpate = document.getElementById('audioVitoriaScooby');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
+function audioColunaCheia() {
+    let audioEmpate = document.getElementById('audioColunaCheia');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
+function audioVitoriaSalsicha() {
+    let audioEmpate = document.getElementById('audioVitoriaSalsicha');
+    audioEmpate.volume = 0.8
+    audioEmpate.play()
+}
+
 
 botaoIniciar.addEventListener('click', function () {
-    janelamodal.style.visibility = "hidden";
+    janelamodal.style.visibility = 'hidden';
+    audioexterno()
 
 })
 
 
-const edgeX = arrayElementos[0].length - 3;
-const edgeY = arrayElementos.length - 3;
-
-function vitoriaDiagonal() {
-
-
-    for (let y = 3; y < arrayElementos.length; y++) {
-        for (let x = 0; x < edgeX; x++) {
-
-            cell = arrayElementos[y][x];
-            if (cell === 1) {
-                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
-                    alert('jogador salsicha venceu')
-                    modalVitoriaSalsicha.style.visibility = "inherit"
-                }
-            } else if (cell === 2) {
-                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
-                }
-            }
+function draw() {
+    let marks = 0
+    for (let i = 0; i < arrayElementos.length; i++) {
+        if (arrayElementos[i][0] !== 0) {
+            marks++
         }
     }
-
-    for (let y = 0; y < edgeY; y++) {
-        for (let x = 0; x < edgeX; x++) {
-            cell = arrayElementos[y][x];
-            if (cell === 1) {
-                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
-                    alert('jogador salsicha venceu!')
-                    modalVitoriaSalsicha.style.visibility = "inherit"
-                }
-            } else if (cell === 2) {
-                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
-                }
-            }
-        }
+    if (marks === 7) {
+        modalEmpate.style.visibility = 'inherit';
+        audio.pause()
+        audioEmpateFunction()
     }
 }
 
-// let arrayElementos = [
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0],
-//     [0, 0, 0, 0, 0, 0]
-// ]
 
 function diskFall(event) {
-    let theJogo = event.path[2].children.length
-    let colunaInteira = event.path[1]; //ColunaArray
-    let colunaTamanho = colunaInteira.children.length; //Tamanho dos Filhos
-    let elementoY = colunaTamanho - 1; //Elemento do ultimo para o primeiro da coluna
+    let colunaInteira = event.path[1];
+    let colunaTamanho = colunaInteira.children.length;
+    let elementoY = colunaTamanho - 1;
     let elementoX = colunaInteira.id
-    cell = event.path[1].children[elementoY]; //Ultima celula do tabuleiro
-    while (cell.childElementCount === 1) {
+    cell = event.path[1].children[elementoY];
+
+    while (cell.childElementCount === 1 && colunaInteira.children[0].childElementCount !== 1) {
         elementoY--
         cell = event.path[1].children[elementoY]
     }
+    if (colunaInteira.children[0].childElementCount === 1) {
+        audioColunaCheia()
+        alert("posição inválida, coluna está cheia")
+    }
 
-    if (cell.childElementCount === 0 && colunaInteira.className === "coluna") {
+    if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
         if (count % 2 === 0) {
             const player1 = document.createElement('div');
             player1.classList.add('player1')
@@ -152,58 +140,93 @@ function diskFall(event) {
             count++
         }
     }
-    vitoriaHorizoltal()
-    vitoriaDiagonal()
-    vitoriaVertical()
-   
-}
-function vitoriaVertical(){
-    const edgeX = arrayElementos[0].length - 3;
-    const edgeY = arrayElementos.length - 3;
 
-    for (let y = 0; y < 6; y++) {
-        console.log('primeiro for')
-        for (let x = 0; x < arrayElementos[y].length; x++) {
-            console.log('segundo for')
-
-             cell = arrayElementos[y][x];
-            if (cell === 1) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
-                }
-            } else if (cell === 2) {
-                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
-                }
-            }
-        }
-    }
+    condicaoVitoria()
+    draw()
 }
-botaoPlayAgain.addEventListener('click', function(){
-    document.location.reload()
- })
-function vitoriaHorizoltal(){
-    const edgeX = arrayElementos[0].length - 3;
-    const edgeY = arrayElementos.length - 3;
-    // modal vitória do scooby
- 
+
+
+const edgeX = arrayElementos[0].length - 3;
+const edgeY = arrayElementos.length - 3;
+
+function condicaoVitoria() {
+
     for (let y = 0; y < arrayElementos.length; y++) {
-      
-        for (let x = 0; x < arrayElementos[y].length; x++) {
-          
-             cell = arrayElementos[y][x];
+        for (let x = 0; x < edgeX; x++) {
+            let cell = arrayElementos[y][x];
             if (cell === 1) {
-                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    modalVitoriaSalsicha.style.visibility = "inherit"
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
-                if (cell === arrayElementos[y+1][x] && cell === arrayElementos[y+2][x] && cell === arrayElementos[y+3][x]) {
-                    modalVitoriaScooby.style.visibility = "inherit"
+                if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                    modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
+                }
+            }
+        }
+    }
+
+    for (let y = 0; y < edgeY; y++) {
+        for (let x = 0; x < arrayElementos[0].length; x++) {
+            cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
+                    modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
+                }
+            }
+        }
+    }
+
+    for (let y = 0; y < edgeY; y++) {
+        for (let x = 0; x < edgeX; x++) {
+            cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
+                    modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
+                }
+            }
+        }
+    }
+
+    for (let y = 3; y < arrayElementos.length; y++) {
+        for (let x = 0; x < edgeX; x++) {
+            cell = arrayElementos[y][x];
+            if (cell === 1) {
+                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
+                    modalVitoriaSalsicha.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaSalsicha()
+                }
+            } else if (cell === 2) {
+                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
+                    modalVitoriaScooby.style.visibility = 'inherit'
+                    audio.pause()
+                    audioVitoriaScooby()
                 }
             }
         }
     }
 }
- 
-
-
+botaoPlayAgain.addEventListener('click', function () {
+    document.location.reload()
+})
