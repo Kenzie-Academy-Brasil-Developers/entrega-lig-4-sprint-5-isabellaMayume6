@@ -102,8 +102,6 @@ function diskFall(event) {
             count++
         }
     }
-    // vitoriaHorizoltal()
-    // vitoriaVertical()
     vitoriaDiagonal()
 
 }
@@ -111,7 +109,7 @@ function diskFall(event) {
 const edgeX = arrayElementos[0].length - 3;
 const edgeY = arrayElementos.length - 3;
 
-
+setInterval(
 function vitoriaDiagonal() {
     // ------------------- verificação diagonal--------------------//
     for (let y = 0; y < arrayElementos.length; y++) {
@@ -174,9 +172,7 @@ function vitoriaDiagonal() {
         }
     }
 }
-
-
-
+, 1000);
 botaoPlayAgain.addEventListener('click', function () {
     document.location.reload()
 })
