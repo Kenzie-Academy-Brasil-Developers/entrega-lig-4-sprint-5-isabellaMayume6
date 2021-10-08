@@ -123,7 +123,7 @@ function diskFall(event) {
     }
     if (colunaInteira.children[0].childElementCount === 1) {
         audioColunaCheia()
-        alert("posição inválida, coluna está cheia")
+        // alert("posição inválida, coluna está cheia")
     }
 
     if (cell.childElementCount === 0 && colunaInteira.className === 'coluna') {
