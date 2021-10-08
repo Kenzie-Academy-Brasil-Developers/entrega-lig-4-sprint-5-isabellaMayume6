@@ -132,7 +132,7 @@ function diskFall(event) {
             player1.classList.add('player1')
             cell.appendChild(player1);
             arrayElementos[elementoX[6]][elementoY] = 1
-            
+
         } else if (count % 2 === 1) {
             const player2 = document.createElement('div');
             player2.classList.add('player2')
@@ -141,8 +141,8 @@ function diskFall(event) {
 
         }
         count++
-    } 
-    condicaoVitoria()    
+    }
+    condicaoVitoria()
     draw()
 }
 
@@ -156,23 +156,23 @@ function condicaoVitoria() {
         for (let x = 0; x < edgeX; x++) {
             let cell = arrayElementos[y][x];
             if (cell === 1) {
-               if (win < 1){
-                   if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
-                       modalVitoriaSalsicha.style.visibility = 'inherit'
-                       audio.pause()
-                       audioVitoriaSalsicha()
-                       win++
-                       
+                if (win < 1) {
+                    if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
+                        modalVitoriaSalsicha.style.visibility = 'inherit'
+                        audio.pause()
+                        audioVitoriaSalsicha()
+                        win++
+
                     }
                 }
             } else if (cell === 2) {
-                if(win < 1){
+                if (win < 1) {
                     if (cell === arrayElementos[y][x + 1] && cell === arrayElementos[y][x + 2] && cell === arrayElementos[y][x + 3]) {
                         win++
                         modalVitoriaScooby.style.visibility = 'inherit'
                         audio.pause()
                         audioVitoriaScooby()
-                        
+
                     }
                 }
             }
@@ -183,23 +183,23 @@ function condicaoVitoria() {
         for (let x = 0; x < arrayElementos[0].length; x++) {
             cell = arrayElementos[y][x];
             if (cell === 1) {
-                if(win < 1){
+                if (win < 1) {
                     if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
                         win++
                         modalVitoriaSalsicha.style.visibility = 'inherit'
                         audio.pause()
                         audioVitoriaSalsicha()
-                        
+
                     }
                 }
             } else if (cell === 2) {
-                if(win < 1){
+                if (win < 1) {
                     if (cell === arrayElementos[y + 1][x] && cell === arrayElementos[y + 2][x] && cell === arrayElementos[y + 3][x]) {
                         win++
                         modalVitoriaScooby.style.visibility = 'inherit'
                         audio.pause()
                         audioVitoriaScooby()
-                        
+
                     }
                 }
             }
@@ -210,13 +210,13 @@ function condicaoVitoria() {
         for (let x = 0; x < edgeX; x++) {
             cell = arrayElementos[y][x];
             if (cell === 1) {
-                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
+                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
                     audio.pause()
                     audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
-                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2]) {
+                if (cell === arrayElementos[y + 1][x + 1] && cell === arrayElementos[y + 2][x + 2] && cell === arrayElementos[y + 3][x + 3]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
                     audio.pause()
                     audioVitoriaScooby()
@@ -229,13 +229,13 @@ function condicaoVitoria() {
         for (let x = 0; x < edgeX; x++) {
             cell = arrayElementos[y][x];
             if (cell === 1) {
-                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
+                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
                     modalVitoriaSalsicha.style.visibility = 'inherit'
                     audio.pause()
                     audioVitoriaSalsicha()
                 }
             } else if (cell === 2) {
-                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2]) {
+                if (cell === arrayElementos[y - 1][x + 1] && cell === arrayElementos[y - 2][x + 2] && cell === arrayElementos[y - 3][x + 3]) {
                     modalVitoriaScooby.style.visibility = 'inherit'
                     audio.pause()
                     audioVitoriaScooby()
