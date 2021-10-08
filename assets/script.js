@@ -172,7 +172,6 @@ function condicaoVitoria() {
                         modalVitoriaScooby.style.visibility = 'inherit'
                         audio.pause()
                         audioVitoriaScooby()
-                        
                     }
                 }
             }

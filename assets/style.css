@@ -16,13 +16,15 @@ header {
 .coluna {
     display: flex;
     flex-direction: column;
-    width: 50px;
+    width: 13vw;
+    max-width: 12vw;
     height: 100%;
 }
 
 .linha {
-    width: 50px;
-    height: 50px;
+    width: 12vw;
+    height: 10vh;
+    max-width: 15vw;
     border: 1px solid black;
     background-color: gainsboro;
 }
@@ -45,11 +47,10 @@ header {
     background: no-repeat center;
     background-size: 45px;
     background-image: url(../assets/img/salsichascare.png);
-    width: 45px;
+    width: 10vw;
     height: 45px;
     border-radius: 20%;
-    border: 2px;
-    margin: 2.5px;
+    margin: 10%;
     animation: salsichadeslizando 1s;
     pointer-events: none;
 }
@@ -58,10 +59,10 @@ header {
     background: no-repeat center;
     background-size: 40px;
     background-image: url(../assets/img/scoobyscare.png);
-    width: 45px;
+    width: 10vw;
     height: 45px;
     border-radius: 20%;
-    border: 2px;
+    margin: 10%;
     animation: scoobydeslizando 1s;
     pointer-events: none;
 }
@@ -302,6 +303,20 @@ footer {
 
     to {
         transform: translateY(0);
+    }
+}
+@media (min-width: 480px){
+    .coluna{
+        width: 55px;
+    }
+    .linha{
+        width: 55px;
+    }
+    .player1{
+        width: 45px;
+    }
+    .player2{
+        width: 45px;
     }
 }
 
